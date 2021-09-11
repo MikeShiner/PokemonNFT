@@ -18,6 +18,7 @@
   "homepage": "https://github.com/MikeShiner/PokemonNFT#readme",
   "dependencies": {
     "@openzeppelin/contracts": "^4.3.1",
+    "truffle": "^5.4.10",
     "truffle-flattener": "^1.5.0"
   }
 }
