@@ -1,0 +1,23 @@
+{
+  "name": "pokemon-nft",
+  "version": "1.0.0",
+  "description": "Pokemon NFT minting with companion web app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MikeShiner/PokemonNFT.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MikeShiner/PokemonNFT/issues"
+  },
+  "homepage": "https://github.com/MikeShiner/PokemonNFT#readme",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.3.1",
+    "truffle-flattener": "^1.5.0"
+  }
+}
