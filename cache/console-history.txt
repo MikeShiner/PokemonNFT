@@ -1,0 +1,26 @@
+await pkm.baseURI();
+await pkm.tokenURI('1');
+await pkm.setBaseURI('https://my-json-server.typicode.com/MikeShiner/PokemonNFT/pokemon/');
+await pkm.tokenURI('1');
+await pkm.setBaseURI('https://pokemonmasters.com/');
+await pkm.setBaseURI('https://pokemonmasters.com');
+await pkm.tokensOfOwner('0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266')
+await pkm.mintPokemon('0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266')
+await pkm.tokensOfOwner('0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266')
+await pkm.mintPokemon('0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266')
+await pkm.tokenURI('1');
+const pkm = await Pkm.attach('0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9')
+const Pkm = await ethers.getContractFactory('PokemonNFT')
+await pkm.tokenURI('1');
+await pkm.setBaseURI('https://pokemonmasters.com');
+await pkm.tokenURI('1');
+await pkm.TokenURI('1');
+await pkm.getTokenUr('1')
+await pkm.getTokenUri('1')
+await pkm.tokensOfOwner('0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266')
+await pkm.mintPokemon('0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266')
+await pkm.tokensOfOwner('0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266')
+await pkm.mintPokemon('0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266')
+console.log(pkm)
+const pkm = await Pkm.attach('0x5fbdb2315678afecb367f032d93f642f64180aa3')
+const Pkm = await ethers.getContractFactory('PokemonNFT')

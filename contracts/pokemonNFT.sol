@@ -17,7 +17,7 @@ contract PokemonNFT is ERC721Enumerable, Ownable {
     string private _baseUri;
     Counters.Counter private _tokenIds;
 
-    constructor() ERC721("GameItem", "ITM") {
+    constructor() ERC721("PokemonNFT", "PKM") {
         maxToMint = 151;
     }
 
@@ -38,6 +38,32 @@ contract PokemonNFT is ERC721Enumerable, Ownable {
         return _baseUri;
     }
 
+        function uint2str(uint256 _i)
+        internal
+        pure
+        returns (string memory _uintAsString)
+    {
+        if (_i == 0) {
+            return "0";
+        }
+        uint256 j = _i;
+        uint256 len;
+        while (j != 0) {
+            len++;
+            j /= 10;
+        }
+        bytes memory bstr = new bytes(len);
+        uint256 k = len;
+        while (_i != 0) {
+            k = k - 1;
+            uint8 temp = (48 + uint8(_i - (_i / 10) * 10));
+            bytes1 b1 = bytes1(temp);
+            bstr[k] = b1;
+            _i /= 10;
+        }
+        return string(bstr);
+    }
+
     function tokenURI(uint256 tokenId)
         public
         view
@@ -53,7 +79,7 @@ contract PokemonNFT is ERC721Enumerable, Ownable {
         string memory base = _baseURI();
 
         // If there is a baseURI but no tokenURI, concatenate the tokenID to the baseURI.
-        return string(abi.encodePacked(base, tokenId));
+        return string(abi.encodePacked(base, uint2str(tokenId)));
     }
 
     function tokensOfOwner(address _owner)
