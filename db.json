@@ -3,7 +3,7 @@
       {
         "id": 1,
         "name": "Bulbasuar",
-        "imageUrl": "https://img.pokemondb.net/artwork/large/bulbasaur.jpg"
+        "image": "https://img.pokemondb.net/artwork/large/bulbasaur.jpg"
       }
     ]
   }
