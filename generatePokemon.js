@@ -5,10 +5,17 @@ const transformed = data.map(pkm => pkm.name)
 
 const pkmJson = {pokemon: []}
 transformed.forEach((name, i) => {
-    pkmJson.pokemon.push({
+    let data = {
         id: i+1,
         name: name.charAt(0).toUpperCase() + name.slice(1),
         image: `https://img.pokemondb.net/artwork/large/${name}.jpg`
-    })
+    }
+    if(data.name.includes('-m')) {
+        data.name = data.name.replace('-m', ' [Male]')
+    }
+    if(data.name.includes('-f')) {
+        data.name = data.name.replace('-f', ' [Female]')
+    }
+    pkmJson.pokemon.push(data)
 })
 fs.writeFileSync('db.json', JSON.stringify(pkmJson));
