@@ -6,6 +6,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 contract PokemonNFT is ERC721Enumerable, Ownable {
     using Counters for Counters.Counter;
@@ -13,19 +14,19 @@ contract PokemonNFT is ERC721Enumerable, Ownable {
     // Mapping from token ID to owner address
     mapping(uint256 => string) private _tokenURIs;
     uint256 public maxToMint;
-
     string private _baseUri;
     Counters.Counter private _tokenIds;
 
-    constructor() ERC721("PokemonNFT", "PKM") {
+    constructor(string memory baseUri) ERC721("PokemonNFT", "PKM") {
         maxToMint = 151;
+        _baseUri = baseUri;
     }
 
-    function mintPokemon(address customer) public returns (uint256) {
+    function mintPokemon() public returns (uint256) {
         _tokenIds.increment();
 
         uint256 newItemId = _tokenIds.current();
-        _safeMint(customer, newItemId);
+        _safeMint(msg.sender, newItemId);
 
         return newItemId;
     }
@@ -38,31 +39,6 @@ contract PokemonNFT is ERC721Enumerable, Ownable {
         return _baseUri;
     }
 
-        function uint2str(uint256 _i)
-        internal
-        pure
-        returns (string memory _uintAsString)
-    {
-        if (_i == 0) {
-            return "0";
-        }
-        uint256 j = _i;
-        uint256 len;
-        while (j != 0) {
-            len++;
-            j /= 10;
-        }
-        bytes memory bstr = new bytes(len);
-        uint256 k = len;
-        while (_i != 0) {
-            k = k - 1;
-            uint8 temp = (48 + uint8(_i - (_i / 10) * 10));
-            bytes1 b1 = bytes1(temp);
-            bstr[k] = b1;
-            _i /= 10;
-        }
-        return string(bstr);
-    }
 
     function tokenURI(uint256 tokenId)
         public
@@ -78,7 +54,6 @@ contract PokemonNFT is ERC721Enumerable, Ownable {
 
         string memory base = _baseURI();
 
-        // If there is a baseURI but no tokenURI, concatenate the tokenID to the baseURI.
         return string(abi.encodePacked(base, uint2str(tokenId)));
     }
 
@@ -97,5 +72,30 @@ contract PokemonNFT is ERC721Enumerable, Ownable {
             }
             return result;
         }
+    }
+
+    /**
+        Helper functions
+     */
+    function uint2str(uint _i) internal pure returns (string memory _uintAsString) {
+        if (_i == 0) {
+            return "0";
+        }
+        uint j = _i;
+        uint len;
+        while (j != 0) {
+            len++;
+            j /= 10;
+        }
+        bytes memory bstr = new bytes(len);
+        uint k = len;
+        while (_i != 0) {
+            k = k-1;
+            uint8 temp = (48 + uint8(_i - _i / 10 * 10));
+            bytes1 b1 = bytes1(temp);
+            bstr[k] = b1;
+            _i /= 10;
+        }
+        return string(bstr);
     }
 }
