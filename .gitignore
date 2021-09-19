@@ -9,7 +9,8 @@ lerna-debug.log\*
 artifacts
 .deps
 secrets.json
-cache/
+cache
+console-history.txt
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 
